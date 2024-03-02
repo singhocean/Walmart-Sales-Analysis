@@ -57,10 +57,10 @@ SELECT time,
 -- Now let's go ahead and add this column to our table.
 ALTER TABLE Wlmrtsales ADD time_of_day VARCHAR(20);
 
--- IF we check, this column is empty for now and will show NULL values.
+-- If we check, this column is empty for now and will show NULL values.
 SELECT time_of_day FROM Wlmrtsales;
 
---Let's add some data into this column.
+--Let's insert some data into this column.
 UPDATE Wlmrtsales SET time_of_day = (CASE
 		    WHEN time BETWEEN '00:00:00' AND '12:00:00' THEN 'Morning'
 			WHEN time BETWEEN '12:01:00' AND '16:00:00' THEN 'Afternoon'
@@ -102,8 +102,8 @@ SELECT DISTINCT city, branch FROM Wlmrtsales;
 
 ---------------------Product Related Questions-------------------------------------------------------------------------------------------------------------------------
 --1. How many unique product lines does the data have?
-SELECT DISTINCT product_line FROM Wlmrtsales;
-SELECT COUNT(DISTINCT product_line) AS unique_products FROM Wlmrtsales;
+SELECT DISTINCT product_line FROM Wlmrtsales; -- This will show different product lines
+SELECT COUNT(DISTINCT product_line) AS unique_products FROM Wlmrtsales; -- This will show the number of different product lines.
 
 --2. What is the most common payment method?
 -- Let's first see what are the payment method options available in the data.
@@ -129,7 +129,7 @@ SELECT city, SUM(total) AS total_revenue_of_city FROM Wlmrtsales GROUP BY city O
 --8. What product line had the largest VAT?
 SELECT product_line, SUM(VAT) AS total_VAT_of_product FROM Wlmrtsales GROUP BY product_line ORDER BY total_VAT_of_product DESC;
 
---9. Fetch each product line and add a column to those product line showing "Good", "Bad". Good if its greater than average sales.
+--9. Fetch each product line and add a column to those product line showing "Good", "Bad". Good if its sales is greater than the average sales.
 SELECT product_line, cogs,
 		            CASE
 			              WHEN cogs > (SELECT AVG(cogs) FROM Wlmrtsales) THEN 'Good'
@@ -156,7 +156,7 @@ SELECT DISTINCT customer_type FROM Wlmrtsales;
 --Now answer to the question.
 SELECT customer_type, SUM(total) AS revenue FROM Wlmrtsales GROUP BY customer_type ORDER BY revenue DESC;
 
---3. Which city has the largest tax percent/ VAT (**Value Added Tax**)?
+--3. Which city has the largest tax / VAT (**Value Added Tax**)?
 SELECT city, SUM(VAT) AS tax FROM Wlmrtsales GROUP BY city ORDER BY tax DESC;
 
 --4. Which customer type pays the most in VAT?
