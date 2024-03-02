@@ -28,7 +28,8 @@ The dataset is obtained from Kaggle Walmart Sales Forecasting Competition:
 | rating                  | Rating                                  |
 
 ## Tools
-Microsoft SQL Server
+- Microsoft Excel - For data cleansing.
+- Microsoft SQL Server - For exploratory data analysis.
 
 ## Types of Analysis to be performed
 1. Product Analysis
