@@ -79,7 +79,7 @@ The dataset is obtained from Kaggle Walmart Sales Forecasting Competition:
 10. Which day of the week has the best average ratings per branch?
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
-## Steps taken to proceed for analysis
+## Steps taken for analysis
 ### 1. Data Wrangling:
 Did inspection of data to make sure **NULL** values and missing values are detected. 
 
